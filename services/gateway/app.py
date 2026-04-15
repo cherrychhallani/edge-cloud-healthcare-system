@@ -15,19 +15,19 @@ def process_request():
     try:
         # Patient Service
         patient_res = requests.post(
-            "http://127.0.0.1:5003/patient",
+            "http://patient:5003/patient",
             json=data
         ).json()
 
         # Billing Service
         billing_res = requests.post(
-            "http://127.0.0.1:5004/bill",
+            "http://billing:5004/bill",
             json=data
         ).json()
 
         # Prescription Service
         prescription_res = requests.post(
-            "http://127.0.0.1:5005/prescription",
+            "http://prescription:5005/prescription",
             json=data
         ).json()
 
@@ -42,4 +42,4 @@ def process_request():
     })
 
 if __name__ == '__main__':
-    app.run(port=5002, debug=True)
+    app.run(host='0.0.0.0', port=5002, debug=True)

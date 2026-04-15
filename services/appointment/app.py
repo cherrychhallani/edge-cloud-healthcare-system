@@ -27,7 +27,7 @@ def create_appointment():
     # Send to Gateway
     try:
         response = requests.post(
-            "http://127.0.0.1:5002/process",
+            "http://gateway:5002/process",
             json=appointment
         )
         gateway_response = response.json()
@@ -46,4 +46,4 @@ def get_appointments():
     return jsonify(appointments)
 
 if __name__ == '__main__':
-    app.run(port=5001, debug=True)
+    app.run(host='0.0.0.0', port=5001, debug=True)
